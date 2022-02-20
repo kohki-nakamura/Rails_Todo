@@ -41,6 +41,14 @@ class TasksController < ApplicationController
         end
     end
 
+    # 削除処理
+    def destroy
+        @task = Task.find(params[:id])
+        @task.destroy
+        # 一覧ページへ
+        redirect_to tasks_path
+    end
+
     # ストロングパラメーターの設定
     private
     def task_params
