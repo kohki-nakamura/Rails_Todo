@@ -14,10 +14,30 @@ class TasksController < ApplicationController
         @task = Task.new(task_params)
         # 保存に成功した場合
         if @task.save
-            redirect_to tasks_path #一覧ページへ
+            # 一覧ページへ
+            redirect_to tasks_path 
         # 保存に失敗した場合
         else
-            render 'new' #失敗したら新規作成ページのまま
+            # 新規作成ページのまま
+            render 'new' 
+        end
+    end
+
+    # 編集ページ表示
+    def edit
+        @task = Task.find(params[:id])
+    end
+
+    def update
+        @task = Task.find(params[:id])
+        # 編集に成功した場合
+        if @task.update(task_params)
+            # 一覧ページへ
+            redirect_to tasks_path 
+        # 編集に失敗した場合
+        else
+            # 編集ページのまま
+            render 'edit' 
         end
     end
 
