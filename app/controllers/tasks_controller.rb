@@ -5,51 +5,46 @@ class TasksController < ApplicationController
         @tasks = Task.all
     end
 
+    def show
+        @task = Task.find(params[:id])
+    end
+
     # 新規作成ページ表示
     def new
         @task = Task.new
     end
 
     def create
-        @task = Task.new(task_params)
-        # 保存に成功した場合
+        @task = Task.new(title: "title", body: "body")
+
         if @task.save
-            # 一覧ページへ
-            redirect_to tasks_path 
-        # 保存に失敗した場合
+            redirect_to @task
         else
-            # 新規作成ページのまま
-            render 'new' 
+            render :new, status: :unprocessable_entity
         end
     end
 
-    # 編集ページ表示
     def edit
         @task = Task.find(params[:id])
     end
 
     def update
         @task = Task.find(params[:id])
-        # 編集に成功した場合
+
         if @task.update(task_params)
-            # 一覧ページへ
-            redirect_to tasks_path 
-        # 編集に失敗した場合
+            redirect_to @task
         else
-            # 編集ページのまま
-            render 'edit' 
+            render :edit, status: :unprocessable_entity
         end
     end
 
-    # 削除処理
     def destroy
         @task = Task.find(params[:id])
         @task.destroy
-        # 一覧ページへ
-        redirect_to tasks_path
+
+        redirect_to root_path, status: :see_other
     end
 
-    # ストロングパラメーターの設定
     private
     def task_params
         params.require(:task).permit(:title, :body)

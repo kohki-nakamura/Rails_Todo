@@ -1,0 +1,13 @@
+<h1><%= @task.title %></h1>
+
+<p><%= @task.body %></p>
+
+<ul>
+    <li><%= link_to "編集", edit_task_path(@task) %></li>
+    <li><%= link_to "削除", task_path(@task), data: { 
+        turbo_method: :delete,
+        turbo_confirm: "本当にOK？"
+        } %></li>
+</ul>
+
+<%= link_to "タスク一覧へ", task_path %>
