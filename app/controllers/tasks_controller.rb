@@ -15,7 +15,7 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = Task.new(title: "title", body: "body")
+        @task = Task.new(task_params)
 
         if @task.save
             redirect_to @task
