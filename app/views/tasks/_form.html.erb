@@ -1,17 +1,17 @@
+<%= link_to "タスク一覧へ", tasks_path, {class: "btn btn-primary mx-1"} %>
 <%= form_with model: task do |form| %>
-    <div>
+    <div class="mb-3">
         <%= form.label :タスク %><br>
         <%= form.text_field :title %>
     </div>
 
-    <div>
+    <div class="mb-3">
         <%= form.label :詳細 %><br>
         <%= form.text_area :body %>
     </div>
 
     <div>
-        <%= form.submit %>
+        <%= form.submit :送信, class: "btn btn-primary mx-1" %>
     </div>
-    
-    <%= link_to "タスク一覧へ", tasks_path %>
+
 <% end %>
