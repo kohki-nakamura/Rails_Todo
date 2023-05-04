@@ -11,7 +11,7 @@ services:
     # 環境変数の指定（初期設定値）
     environment:
       POSTGRES_PASSWORD: password
-  web:
+  app:
     # コンテナ名の指定
     container_name: rails_todo_web
     # Dockerfile のあるディレクトリのパスを指定（imageかbuildを必ず指定する必要がある）

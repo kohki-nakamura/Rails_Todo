@@ -8,7 +8,7 @@ Rails学習用のToDoアプリです。
 ```
 $ docker-compose build
 $ docker-compose up -d
-$ docker-compose exec web bash
+$ docker-compose exec app bash
 $ rails db:migrate
 ```
 http://localhost:3000 にアクセス
