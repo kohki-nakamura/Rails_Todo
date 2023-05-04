@@ -7,3 +7,11 @@ require:
 
 AllCops:
   NewCops: enable
+
+# missing top-level class documentation commentの除外設定
+Documentation:
+  Enabled: false
+
+# frozen_string_literal: trueが付かないようにする
+Style/FrozenStringLiteralComment:
+  Enabled: false
